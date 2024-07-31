@@ -1,0 +1,18 @@
+.banner {
+    background-image: url("https://cdn.pixabay.com/photo/2014/10/19/20/59/hamburger-494706_1280.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100;
+    height: 90vh;
+}
+
+
+.cover {
+    width: 100%;
+    height: 90vh;
+    background-color: black;
+    opacity: .75;
+}
+
+
+.fanout {}
