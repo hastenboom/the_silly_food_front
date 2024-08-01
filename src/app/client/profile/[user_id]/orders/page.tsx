@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import OrderItem from './components/OrderItem';
+import OrderItem from '@/app/client/profile/[user_id]/orders/components/OrderItem';
 
 
 

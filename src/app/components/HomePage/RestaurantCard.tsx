@@ -23,18 +23,28 @@ export default function RestaurantCard() {
                 />
             </div>
 
-            <div className='p-4 textPart lg:flex w-full justify-between'>
+            <div className='p-4 lg:flex w-full justify-between'>
+
                 <div className="space-y-1">
                     <p className="font-semibold text-lg">Fast Food</p>
                     <p className='text-gray-500 text-sm'>Try our new fried chicken sandwich</p>
                 </div>
-                <div>
-                    <IconButton>
-                        {true ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                    </IconButton>
+
+                <div className="flex-col">
+                    <div>
+                        <IconButton>
+                            {true ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                        </IconButton>
+                    </div>
+
+                    {/* rating */}
+                    <div className="pl-2">
+                        x/5
+                    </div>
                 </div>
 
             </div>
+
         </Card >
     )
 }

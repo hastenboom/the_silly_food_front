@@ -19,10 +19,8 @@ export default function HomePage() {
                     <p className="z-10 text-gray-300 text-xl lg:text-4xl">Taste Your Convenience : Food, Fast and Delivered.</p>
                 </div>
 
-                <div className="cover absolute top-0 left-0 right-0">
-
-                </div>
-                <div className="fadout"></div>
+                {/* background image, don't remove it */}
+                <div className="cover absolute top-0 left-0 right-0"> </div>
 
             </section>
 
@@ -35,6 +33,7 @@ export default function HomePage() {
             <section className="px-5 lg:px20 pt-10">
                 <h1 className="text-2xl font-semibold text-gray-400 py-5">Our Favorite Restaurants</h1>
                 <div className="flex flex-wrap items-center justify-around gap-5">
+
                     {
                         restaurant.map((item) => <RestaurantCard key={item} />)
                     }

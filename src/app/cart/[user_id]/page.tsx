@@ -29,7 +29,6 @@ const items = [1, 1, 1, 1]
 export default function CartDetailsPage() {
 
 
-
   function createOrderUsingSelectedAddress() {
 
   }

@@ -1,9 +1,9 @@
 "use client"
 import Navbar from '@/app/components/Navbar/Navbar'
 import { CssBaseline } from '@mui/material'
-import React from 'react'
+import React, {ReactElement} from 'react'
 
-export default function layout({ children }) {
+export default function layout({ children }:{children:ReactElement}) {
     return (
         <div>
             {/* <ThemeProvider theme={darkTheme}> */}

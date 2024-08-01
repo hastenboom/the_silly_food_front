@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 
-import { Divider, FormControl, FormControlLabel, Grid, Radio, RadioGroup, ThemeProvider, Typography } from '@mui/material'
+import { Divider, FormControl, FormControlLabel, Grid, Radio, RadioGroup, Rating, ThemeProvider, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -37,6 +37,8 @@ export default function RestaurantDetailsPage({ params }) {
   const [foodType, setFoodType] = useState("all");
   const [foodCategory, setFoodCategory] = useState("");
 
+  const [ratingValue, setRatingValue] = React.useState<number | null>(5);
+
   return (
 
     <ThemeProvider theme={darkTheme}>
@@ -48,8 +50,14 @@ export default function RestaurantDetailsPage({ params }) {
 
           {/* restaurant: name, desc, address, opening hours */}
           <div className="pt-3 pb-5">
+
             {/* name */}
             <h1 className="text-4xl font-semibold">RestaurantNameXXXXXX</h1>
+
+
+            <Typography component="legend">Rating</Typography>
+            <Rating name="read-only" value={ratingValue} readOnly />
+
 
             {/* desc */}
             <p className='text-gray-500 mt-1'>
@@ -77,7 +85,7 @@ export default function RestaurantDetailsPage({ params }) {
                 <span className='text-pink-500'>
                   Mon-Sun: 9:00 AM - 9:00 PM
                 </span>
-                
+
               </p>
             </div>
           </div>
