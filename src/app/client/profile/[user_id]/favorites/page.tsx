@@ -11,9 +11,9 @@ export default function FavoritesPage() {
                 Your favorite restaurants
                     </h1>
             <div className="flex flex-wrap items-center justify-around gap-5">
-                {
+              {/*  {
                     restaurant.map((item) => <RestaurantCard key={item} />)
-                }
+                }*/}
 
             </div>
         </>

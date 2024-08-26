@@ -18,9 +18,9 @@ export default function OrdersPage() {
 
       </h1>
       <div className="w-[85%] mx-auto">
-        {[1, 1, 1].map((item) => {
+       {/* {[1, 1, 1].map((item) => {
           return <OrderItem />
-        })}
+        })}*/}
       </div>
     </div>
   )

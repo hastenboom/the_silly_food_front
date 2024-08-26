@@ -8,4 +8,11 @@ class Result<T> {
         this.msg = msg;
         this.data = data;
     }
+
+    toString(): string {
+        return JSON.stringify({
+            data: this.data
+        })
+    }
+
 }

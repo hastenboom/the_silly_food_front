@@ -1,18 +1,21 @@
+"use client"
 import Navbar from '@/app/components/Navbar/Navbar'
-import {CssBaseline} from '@mui/material'
+import {CssBaseline, ThemeProvider} from '@mui/material'
 import React from 'react'
+import {darkTheme} from "@/theme/DarkTheme";
 
+// @ts-ignore
 export default function layout({children}) {
     return (
         <div>
-            {/* <ThemeProvider theme={darkTheme}> */}
+             <ThemeProvider theme={darkTheme}>
             <CssBaseline/>
             <Navbar/>
             <div className="px-10 ">
                 {children}
             </div>
 
-            {/* </ThemeProvider> */}
+             </ThemeProvider>
         </div>
     )
 }

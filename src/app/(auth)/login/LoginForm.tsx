@@ -153,8 +153,9 @@ function SendCodeButton({isTermsChecked, phone}: { isTermsChecked: boolean, phon
 }
 
 
-function SwitchModeButton({isPasswordMode, setIsPasswordMode}) {
-
+function SwitchModeButton(
+    //@ts-ignore
+    {isPasswordMode, setIsPasswordMode}) {
     const handleClick = () => {
         setIsPasswordMode(!isPasswordMode);
     };
@@ -177,9 +178,12 @@ function SwitchModeButton({isPasswordMode, setIsPasswordMode}) {
 }
 
 
-function TermsCheckbox({isTermsChecked, setIsTermsChecked}) {
+function TermsCheckbox(
+    //@ts-ignore
+    {isTermsChecked, setIsTermsChecked}) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    //@ts-ignore
     const handleCheckboxChange = (event) => {
         // console.log(event.target.checked)
         setIsTermsChecked(event.target.checked);

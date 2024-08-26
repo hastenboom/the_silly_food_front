@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, {ReactElement} from 'react'
 
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -8,7 +8,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import EventIcon from '@mui/icons-material/Event';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ProfileNavItem from './ProfileNavItem';
-import { ProfileDetailsPageParam } from '../page';
+import {ProfileDetailsPageParam} from '../page';
 
 export interface SideNavItem {
     name: string,
@@ -17,60 +17,67 @@ export interface SideNavItem {
 }
 
 
-
-export default function ProfileNav({ params }: { params: ProfileDetailsPageParam }) {
+export default function ProfileNav({params}: { params: ProfileDetailsPageParam }) {
 
     const userId = params.user_id;
 
-    const PREFIX = `/profile/${userId}`
+    const PREFIX = "/client/profile/" + userId
 
 
     const sideNavItems: SideNavItem[] = [
         {
             name: "Orders",
-            icon: <DeliveryDiningIcon />,
+            icon: <DeliveryDiningIcon/>,
             path: `${PREFIX}/orders`
         },
         {
             name: "Favorites",
-            icon: <FavoriteIcon />,
+            icon: <FavoriteIcon/>,
             path: `${PREFIX}/favorites`
         },
         {
             name: "Addresses",
-            icon: <HomeWorkIcon />,
+            icon: <HomeWorkIcon/>,
             path: `${PREFIX}/addresses`
         },
         {
             name: "Payments",
-            icon: <PaymentIcon />,
+            icon: <PaymentIcon/>,
             path: `${PREFIX}/payments`
         },
         {
             name: "Notifications",
-            icon: <NotificationsIcon />,
+            icon: <NotificationsIcon/>,
             path: `${PREFIX}/notifications`
         },
         {
             name: "Events",
-            icon: <EventIcon />,
+            icon: <EventIcon/>,
             path: `${PREFIX}/events`
         },
         {
             name: "Logout",
-            icon: <LogoutIcon />,
+            icon: <LogoutIcon/>,
             path: `${PREFIX}/logout`
         }
 
     ]
 
 
-
     return (
         <div className=" h-[100%] flex flex-col space-y-2">
             {
                 sideNavItems.map(
-                    (navItem) => <ProfileNavItem key={navItem.path} params={params} navItem={navItem} />)
+                    (navItem) => {
+
+                        console.log(navItem.path)
+
+                        return <ProfileNavItem
+                            key={navItem.path}
+                            params={params}
+                            navItem={navItem}/>
+                    }
+                )
             }
 
         </div>

@@ -1,9 +1,11 @@
 "use client"
 import AddressCard from '@/app/cart/[user_id]/components/AddressCard'
-import { Box, Button, Card, Modal } from '@mui/material'
-import React from 'react'
+import {Box, Button, Card, Modal} from '@mui/material'
+import React, {useEffect, useState} from 'react'
 import AddHomeIcon from '@mui/icons-material/AddHome';
 import AddNewAddressFormWithinModal from '@/app/cart/[user_id]/components/AddNewAddressForm';
+import {AddressType} from "@/app/cart/CartType";
+import {myServerAxios} from "@/axios/axiosConfig";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -35,6 +37,19 @@ export default function AddressesPage() {
     // const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const [addressList, setAddressList]
+        = useState<AddressType[]>([]);
+
+    useEffect(() => {
+        async function getAddrList() {
+            const response: Result<AddressType[]> = await myServerAxios.get("/address");
+            if (response.data != null || response.data != undefined) {
+                setAddressList(response.data);
+            }
+        }
+
+        getAddrList()
+    }, [])
 
     return (
 
@@ -45,16 +60,19 @@ export default function AddressesPage() {
                         Manage your addresses
                     </h1>
 
-                    {/* select a address */}
+                    {/* select an address */}
                     <div className="flex gap-5 flex-wrap justify-center">
-                        {[1, 1, 1, 1, 1].map((item) =>
-                            <AddressCard
-                                item={item} showButton={false}
-                                handleSelectAddress={createOrderUsingSelectedAddress} />)}
+
+                        { addressList.length > 0 &&
+                            addressList.map((addrItem) =>
+                                <AddressCard
+                                    key={addrItem.id}
+                                    addrItem={addrItem}
+                                />)}
 
                         {/* -------add new Address */}
                         <Card className="flex gap-5 w-64 pl-10  items-center">
-                            <AddHomeIcon />
+                            <AddHomeIcon/>
                             <div className="space-y-3 text-gray-500">
                                 <h1 className="font-semibold text-lg text-white">New Address</h1>
 
@@ -74,7 +92,7 @@ export default function AddressesPage() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <AddNewAddressFormWithinModal closeModal={handleClose} />
+                    <AddNewAddressFormWithinModal closeModal={handleClose}/>
                 </Box>
             </Modal>
 

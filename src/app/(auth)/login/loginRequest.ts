@@ -1,7 +1,8 @@
 import React from "react";
-import {myServerAxios} from "@/axios/axiosConfig";
+import {myServerAxios, RANDOM_TOKEN} from "@/axios/axiosConfig";
 import {LoginFormDTO, transRoleIntoStr} from "@/app/(auth)/login/LoginDataType";
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
+import {debug} from "@/axios/debugHelper";
 
 
 export async function handleLoginSubmit(
@@ -15,25 +16,23 @@ export async function handleLoginSubmit(
     e.preventDefault();
 
     //@RequestBody
-    const response: Result<string> = await myServerAxios.post(`/login`, loginFormDTO);
 
-    //fixme: debug
-   /* console.log(response)
-    console.log(response.data);*/
-
-    if (response.code === 1) {
+    try {
+        const response: Result<string> = await myServerAxios.post(`/login`, loginFormDTO);
         //@ts-ignore, the token shouldn't be null here;
-        localStorage.setItem('token', response.data);
+        localStorage.setItem(RANDOM_TOKEN, response.data);
+        debug("Login return response.data: " + response.data)
+
         setValidLogin(true);
 
-        //fixme: user_id should be obtained from the response data
         router.push(`/${transRoleIntoStr(loginFormDTO.role)}/profile/${response.data}`)
 
-    } else {
-        setErrMsg(response.msg);
+    } catch (error) {
+        // setErrMsg(response.msg);
         setValidLogin(false);
         // setValidUser(false);
     }
+
 }
 
 

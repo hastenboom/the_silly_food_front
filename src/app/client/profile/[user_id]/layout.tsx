@@ -6,6 +6,7 @@ import { CssBaseline, Divider } from '@mui/material'
 import React from 'react'
 import ProfileNav from './components/ProfileNav'
 
+// @ts-ignore
 export default function layout({ children, params }) {
     return (
         <div>
